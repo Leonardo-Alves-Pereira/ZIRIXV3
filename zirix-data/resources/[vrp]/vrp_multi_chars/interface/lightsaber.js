@@ -71,6 +71,7 @@ const updateChars = () => {
 	});
 }
 
+
 $(document).on('click','.char',function(){
 	let $el = $(this)
 	let isActive = $el.hasClass('active')
@@ -88,10 +89,14 @@ $(document).on('click','.char',function(){
     }
 });
 
-$(document).on('click', '.slot',function(){
-	$.post('https://vrp_multi_chars/newChar',JSON.stringify({
-		
-	}));
+$(document).on('click', '.slot', function () {
+	if (!$(".slot").is(".disabled")) {
+		$(".slot").addClass("disabled");
+		$.post('https://vrp_multi_chars/newChar', JSON.stringify({
+		}));
+	} else {
+		console.log('Por favor aguarde...')
+	}
 });
 
 $(document).on('click', '#new-char-buttom',function(){
